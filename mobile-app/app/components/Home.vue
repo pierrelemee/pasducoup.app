@@ -4,13 +4,23 @@
       <Label text="Pas du coup"/>
     </ActionBar>
 
-    <FlexboxLayout flexDirection="column">
-      <FlexboxLayout flexDirection="row" v-for="player in players" class="player" :backgroundColor="player.color">
-        <Label :text="player.text" class="player-name"/>
-        <Label :text="player.score" class="player-score"/>
-        <Button text="+" class="player-button"/>
+    <FlexboxLayout flexDirection="column" justifyContent="space-evenly">
+      <FlexboxLayout flexDirection="column" flexGrow="1">
+        <FlexboxLayout flexDirection="row" justifyContent="space-between"  v-for="player in players" class="player" :backgroundColor="player.color">
+          <Label :text="player.text" class="player-name"/>
+          <Label :text="player.score" class="player-score"/>
+        </FlexboxLayout>
+      </FlexboxLayout>
+
+      <FlexboxLayout flexDirection="row" justifyContent="flex-end">
+        <Button class="report-button">
+          <FormattedString>
+            <Label class="far" text.decode="&#xf024;" />
+          </FormattedString>
+        </Button>
       </FlexboxLayout>
     </FlexboxLayout>
+
   </Page>
 </template>
 
@@ -58,7 +68,7 @@ export default Vue.extend({
 .player {
   width: 100%;
   margin: 10rem;
-  padding: 20rem 10rem 20rem 30rem;
+  padding: 10 20;
   border-radius: 15rem;
 
 
@@ -77,6 +87,13 @@ export default Vue.extend({
     font-size: 25px;
     font-weight: bold;
   }
+}
 
+.report-button {
+  padding: 20 30;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: orange;
+  border-radius: 50%;
 }
 </style>
